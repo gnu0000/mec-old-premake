@@ -1,0 +1,73 @@
+/*--------------------------------------------------------------------------+
+|                                                                           |
+|       Copyright (c) 1992 by AASHTO.  All Rights Reserved.                 |
+|                                                                           |
+|       This program module is part of BAMS/CES, a module of BAMS,          |
+|       The American Association of State Highway and Transportation        |
+|       Officials' (AASHTO) Information System for Managing Transportation  |
+|       Programs, a proprietary product of AASHTO, no part of which may be  |
+|       reproduced or transmitted in any form or by any means, electronic,  |
+|       mechanical, or otherwise, including photocopying and recording      |
+|       or in connection with any information storage or retrieval          |
+|       system, without permission in writing from AASHTO.                  |
+|                                                                           |
++--------------------------------------------------------------------------*/
+
+
+/*
+ * BAMSCES.rc
+ * Mark Hampton
+ */
+
+#include "..\include\iti.h"
+#include "BAMSCES.h"
+#include "..\include\itimenu.h"
+#include "..\include\itimbase.h"
+#include "..\include\itiwin.h"  /* this is for the LW in bamsces.dlg */
+#include "..\include\winid.h"
+#include "..\include\dialog.h"
+#include "dialog.h"
+#include "help.h"
+#include "Menu.h"
+#include "jobpath.h"
+
+//codepage 437
+codepage 850
+
+/*--- These resources are for the metadata ---*/
+RESOURCE ITIRT_CHILD    ITIRID_WND     child.bin
+RESOURCE ITIRT_LABEL    ITIRID_WND     label.bin
+RESOURCE ITIRT_LABELTXT ITIRID_WND     labeltxt.bin
+RESOURCE ITIRT_DATA     ITIRID_WND     data.bin
+RESOURCE ITIRT_FORMAT   ITIRID_WND     format.bin
+RESOURCE ITIRT_SWMET    ITIRID_WND     static.bin
+RESOURCE ITIRT_LWMET    ITIRID_WND     list.bin
+RESOURCE ITIRT_QUERY    ITIRID_WND     query.bin
+RESOURCE ITIRT_TITLE    ITIRID_WND     title.bin
+RESOURCE ITIRT_DIALOG   ITIRID_WND     Dialog.bin
+RESOURCE ITIRT_DLGFMAT  ITIRID_WND     DlgFmat.bin
+RESOURCE ITIRT_QUERY    ITIRID_UPDATE  update.bin
+RESOURCE ITIRT_QUERY    ITIRID_LOCK    lock.bin
+RESOURCE ITIRT_QUERY    ITIRID_INSERT  insert.bin
+RESOURCE ITIRT_QUERY    ITIRID_DELETE  delete.bin
+RESOURCE ITIRT_QUERY    ITIRID_COPY    copy.bin
+
+
+/*--- These are all the dialog boxes for CES ---*/
+rcinclude bamsces.dlg
+
+
+/*--- icon for BAMS/CES ---*/
+ICON BAMSCES_ICON LOADONCALL BAMSCES.ico
+
+
+/*--- include the default main menu resource and accellerators ---*/
+rcinclude menu.rc
+
+
+/*--- include the help resources ---*/
+rcinclude help.rc
+
+
+
+

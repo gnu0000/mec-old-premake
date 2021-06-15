@@ -1,0 +1,5 @@
+NAME         premake  WINDOWCOMPAT
+DESCRIPTION  'Description Field'  
+HEAPSIZE     2048                 
+STACKSIZE    10240                
+EXETYPE      OS2            

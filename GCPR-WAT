@@ -1,0 +1,84 @@
+STAK = 90000
+LINKER =wlink
+STUB = WSTUBQ.exe
+
+!IF "$(MODE)" == "D3"
+OBJ  = d3
+COPT = -mf -bt=dos -fp5 -s -w3 -ze -zp1 -zq -od -d2 -fo=$(OBJ)\$(@B).obj
+DBUG = DEBUG  ALL
+LIB1 = GnuLibD3
+LIB2 = gclib\GCD3
+!ENDIF
+
+!IF "$(MODE)" == "O3"
+OBJ  = o3
+COPT = -mf -bt=dos -fp5 -s -w3 -ze -zp1 -zq -omaxnet -fo=$(OBJ)\$(@B).obj
+STUB = PSTUB.exe
+EXCP = 4gwbind 4gwpro.exe $(EXE)\$(@B).e $(EXE)\$(@B).exe -N
+DBUG =
+LIB1 = GnuLibO3
+LIB2 = gclib\GCO3
+!ENDIF
+
+LIBS = $(LIB1), $(LIB2)
+
+#target list 
+#
+all: gc.exe gx.exe gi.exe dis.exe
+
+gc:  gc.exe 
+
+gx:  gx.exe 
+
+gi:  gi.exe 
+
+dis: dis.exe
+
+
+
+$(OBJ)\gc.obj : gc.c 
+   wcc386 $(COPT) $(@B).c
+
+$(OBJ)\gx.obj : gx.c 
+   wcc386 $(COPT) $(@B).c
+
+$(OBJ)\gi.obj : gi.c 
+   wcc386 $(COPT) $(@B).c
+
+$(OBJ)\dis.obj : dis.c 
+   wcc386 $(COPT) $(@B).c
+
+$(OBJ)\cfunc.obj : cfunc.c 
+   wcc386 $(COPT) $(@B).c
+
+#gc.exe : $(OBJ)\gc.obj $(LIB2).lib
+#  link $(LOPT) $(OBJ)\$*,,NUL,$(LIBS);
+#
+#gx.exe : $(OBJ)\gx.obj $(OBJ)\cfunc.obj $(LIB2).lib
+#  link $(LOPT) $(OBJ)\$* $(OBJ)\cfunc,,NUL,$(LIBS);
+#
+#gi.exe : $(OBJ)\gi.obj $(OBJ)\cfunc.obj $(LIB2).lib
+#  link $(LOPT) $(OBJ)\$* $(OBJ)\cfunc,,NUL,$(LIBS);
+#
+#dis.exe : $(OBJ)\dis.obj $(LIB2).lib
+#  link $(LOPT) $(OBJ)\$*,,NUL,$(LIBS);
+#
+
+   this
+   is
+   a
+   test
+
+
+
+gc.exe :  $(OBJ)\gc.obj $(LIB2).lib
+	$(LINKER) @<<$(@B).lnk
+system   dos4g
+option   map=$(@B)
+option   stub=$(STUB)
+option   stack=$(STAK)
+$(DBUG)
+lib      $(LIBS)
+file     $(OBJ)\$*
+name     $*.exe
+<<keep

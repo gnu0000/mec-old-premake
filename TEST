@@ -1,0 +1,10 @@
+
+
+
+#include "test" /* This is a comment */
+#include "hello!"
+
+
+bamsces.rc 
+
+bamsces.rc ..\include\iti.h BAMSCES.h ..\include\itimenu.h ..\include\itimbase.h ..\include\itiwin.h ..\include\winid.h ..\include\dialog.h dialog.h help.h Menu.h jobpath.h  

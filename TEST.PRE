@@ -1,0 +1,14 @@
+:FileList Resources = 
+   {
+   bamsces.rc
+   }
+
+
+
+#include "test" /* This is a comment */
+#include "hello!"
+
+
+{F: Resources,,}
+
+{I: bamsces.rc} 
